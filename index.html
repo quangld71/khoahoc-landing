@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ngừng Mời Người Quen — Để Khách Tự Tìm Đến Bạn</title>
+  <meta name="description" content="Lớp học Zoom trực tiếp, 2 buổi, miễn phí: cách để khách hàng tự tìm đến bạn, không cần mời người quen, không sợ bị từ chối.">
+
+  <meta property="og:title" content="Ngừng Mời Người Quen — Để Khách Tự Tìm Đến Bạn">
+  <meta property="og:description" content="Tôi từng bị từ chối gần hết danh sách bạn bè. Giờ khách tự nhắn tôi. Tôi chỉ lại cho bạn, miễn phí, qua 2 buổi Zoom.">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E3A5F',
+            secondary: '#3B6997',
+            accent: '#E0A458',
+            surface: '#F5F7FA',
+            ink: '#0B1B2B'
+          },
+          fontFamily: {
+            heading: ['"Be Vietnam Pro"', 'sans-serif'],
+            body: ['"Noto Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; background:#F5F7FA; }
+    h1,h2,h3,h4 { font-family: 'Be Vietnam Pro', sans-serif; }
+    .faq-content { transition: max-height .25s ease; }
+  </style>
+</head>
+<body class="text-ink">
+
+  <!-- ============================================================
+       GHI CHÚ CHO ANH TRƯỚC KHI PUBLISH — đọc phần này trước:
+       1. Trang này dùng chung cho NHIỀU DIỄN GIẢ — chỉ cần sửa object
+          SPEAKER ngay dưới đây (tên, chức danh, ảnh, link Zalo), toàn bộ
+          các chỗ nhắc tên/chức danh/ảnh/link trên trang tự cập nhật theo.
+          KHÔNG cần sửa từng chỗ trong HTML nữa.
+       2. Phần câu chuyện cá nhân (đoạn mở đầu Hero, "[X năm] trước tôi
+          cũng...") vẫn cần sửa tay theo từng diễn giả — vì đây là câu
+          chuyện thật của riêng người đó, không thể dùng chung.
+       3. Footer vẫn giữ 1 dòng nhỏ nhắc pháp nhân UNIHUB (mờ, không nổi bật)
+          để đảm bảo tính minh bạch pháp lý tối thiểu — không xóa hẳn, vì
+          trang hoàn toàn ẩn danh dễ bị nghi ngờ lừa đảo hơn là có nhắc nhẹ.
+          Nếu anh muốn ẩn hẳn, báo em để bỏ dòng này.
+  ============================================================= -->
+  <script>
+    // ĐỔI DIỄN GIẢ Ở ĐÂY — object duy nhất cần sửa khi dùng trang cho người khác
+    const SPEAKER = {
+      name: "Trần Thị Thúy",
+      title: "Sáng lập cộng đồng Tâm - Thể - Dưỡng · 10 năm kinh nghiệm",
+      photoUrl: "speaker.jpg", // dán URL ảnh thật vào đây; để trống thì hiện khung avatar xám
+      zaloLink: "https://zalo.me/0983062158"
+    };
+  </script>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full bg-surface/95 backdrop-blur border-b border-slate-200 z-50">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <span class="font-heading font-bold text-lg text-primary" data-speaker="name">[Tên Diễn Giả]</span>
+      <a href="#dangky" class="bg-accent text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition">
+        Đăng ký tham dự
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-28 pb-16 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-sm font-semibold text-secondary uppercase tracking-wide mb-4">Bạn à — Lớp học Zoom trực tiếp · 2 buổi · Miễn phí</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
+        Nếu bạn vẫn đang <span class="text-accent whitespace-nowrap">mời người quen</span> — dừng lại.<br class="hidden sm:block">
+        Cách đó đang làm bạn đau, không làm bạn có thêm khách.
+      </h1>
+      <p class="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
+        Tôi là <span data-speaker="name">[Tên Diễn Giả]</span>. 5 năm trước tôi cũng nhắn gần hết danh bạ bạn bè. Bị từ chối gần hết. Có lúc nghi ngờ chính mình. Giờ tôi không mời ai nữa — người ta tự nhắn tôi trước. Tôi và đội ngũ diễn giả được tuyển chọn sẽ chỉ lại đúng cách đó cho bạn, miễn phí, qua 2 buổi Zoom trực tiếp.
+      </p>
+      <a href="#dangky" class="inline-block bg-accent text-white px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition">
+        Giữ chỗ — Miễn phí
+      </a>
+      <p class="text-sm text-slate-500 mt-4">Không cần kinh nghiệm. Không cần vốn. Tổng cộng khoảng 4-6 tiếng cho cả 2 buổi — chỉ cần máy tính/điện thoại có Zoom.</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM / AGITATE (storytelling, không phải liệt kê khô) -->
+  <section class="py-16 px-5 sm:px-8 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-6">Bạn có nhận ra mình trong những dòng dưới đây không?</h2>
+      <div class="space-y-4 text-lg text-slate-700 leading-relaxed">
+        <p>Mời hết người trong danh bạ. Nhắn từng người một, chọn từng câu chữ để không bị nghĩ là làm phiền. Vẫn bị từ chối. Có người còn lơ luôn tin nhắn.</p>
+        <p>Thử đăng vào mấy group đông người. Bài chìm nghỉm giữa hàng trăm bài giống hệt nhau. Không ai hỏi gì.</p>
+        <p>Rồi bắt đầu nghĩ: <em>hay là mình không hợp làm việc này?</em></p>
+      </div>
+      <p class="mt-6 text-xl font-semibold text-primary">Không phải vậy. Không phải vì bạn tệ. Không phải vì bạn thiếu cố gắng. Vấn đề là cách tiếp cận.</p>
+
+      <!-- MINH HỌA (chat mockup — không phải ảnh chụp thật, dựng để minh họa sự khác biệt) -->
+      <p class="text-xs text-slate-400 uppercase tracking-wide mt-10 mb-3">Minh họa</p>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div class="bg-surface rounded-xl border border-slate-200 p-5">
+          <p class="text-sm font-semibold text-slate-500 mb-3">Cách cũ — mình đi mời</p>
+          <div class="flex justify-end mb-2">
+            <div class="bg-slate-300 text-slate-700 text-sm rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">Chị ơi, dạo này em có làm thêm cái này hay lắm, chị tham gia thử nha...</div>
+          </div>
+          <p class="text-right text-xs text-slate-400">Đã xem · 14:32 · không trả lời</p>
+        </div>
+        <div class="bg-primary/5 rounded-xl border border-primary/20 p-5">
+          <p class="text-sm font-semibold text-primary mb-3">Cách mới — họ tự nhắn mình</p>
+          <div class="flex justify-start mb-2">
+            <div class="bg-accent text-white text-sm rounded-2xl rounded-tl-sm px-4 py-2 max-w-[80%]">Chị ơi cho em xin thông tin cái chị đăng hôm qua với ạ!</div>
+          </div>
+          <p class="text-xs text-slate-500">Họ chủ động nhắn trước — không cần mình mở lời</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BẠN SẼ HỌC CÙNG AI — ảnh Zoom thật từ các buổi trước -->
+  <section class="py-16 px-5 sm:px-8 bg-white">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Bạn sẽ không học một mình</h2>
+      <p class="text-lg text-slate-600 max-w-xl mx-auto mb-8">Bạn sẽ tham gia cùng một nhóm khá đông người khác qua Zoom — cùng nghe, cùng hỏi, cùng thấy mình không phải người duy nhất từng bị từ chối vì cách làm cũ.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <img src="zoom1.jpg" alt="Ảnh chụp buổi Zoom thật, chị Thúy cùng học viên" class="rounded-xl border border-slate-200 shadow-sm w-full">
+        <img src="zoom2.jpg" alt="Ảnh chụp buổi Zoom thật khác, chị Thúy cùng học viên" class="rounded-xl border border-slate-200 shadow-sm w-full">
+      </div>
+      <p class="text-xs text-slate-400 mt-3">Ảnh chụp thật từ các buổi chia sẻ trước — không phải ảnh dựng</p>
+    </div>
+  </section>
+
+  <!-- MECHANISM REVEAL (teaser, chưa dạy hết) -->
+  <section class="py-16 px-5 sm:px-8">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Điều thay đổi mọi thứ với tôi: ngừng đi tìm khách — để khách tự tìm mình</h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Mời người quen là mình đoán ai đó <em>có thể</em> cần rồi chủ động tiếp cận — tỷ lệ trúng thấp, và người bị mời dễ cảm thấy bị làm phiền. Còn cách tôi đang dùng: chỉ xuất hiện đúng chỗ những người <em>đang thực sự tìm</em>, để họ tự nhắn mình trước.
+      </p>
+      <p class="text-lg text-slate-600 leading-relaxed mt-4">
+        Nghe đơn giản, nhưng cách làm cụ thể mới là phần quan trọng. Bạn sẽ tự hỏi: vậy làm sao để đúng người tự tìm đến mình? Đó là điều tôi và đội ngũ diễn giả được tuyển chọn sẽ đi từng bước cùng bạn trong 2 buổi Zoom tới.
+      </p>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY (placeholder — cần thông tin thật) -->
+  <section class="py-16 px-5 sm:px-8 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Vì sao tôi chia sẻ điều này</h2>
+      <p class="text-lg text-slate-600 mb-6">Đây không phải lần đầu cách này được áp dụng — đã có <strong>hơn 300 người</strong> dùng đúng cách tiếp cận này trước đó.</p>
+
+      <div class="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-6">
+        <p class="text-sm font-semibold text-primary mb-4">Hành trình 300+ người đó đã đi qua</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-white rounded-lg p-3 text-center border border-slate-200">
+            <p class="text-2xl mb-1">😓</p>
+            <p class="text-xs text-slate-600">Không biết bắt đầu từ đâu, sợ bị <span class="whitespace-nowrap">từ chối</span></p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center border border-slate-200">
+            <p class="text-2xl mb-1">🔍</p>
+            <p class="text-xs text-slate-600">Biết đúng người, đúng chỗ để <span class="whitespace-nowrap">xuất hiện</span></p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center border border-slate-200">
+            <p class="text-2xl mb-1">💬</p>
+            <p class="text-xs text-slate-600">Có người chủ động nhắn hỏi</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-center border border-primary/40">
+            <p class="text-2xl mb-1">🎯</p>
+            <p class="text-xs text-slate-700 font-semibold">Có khách/đơn hàng đầu tiên</p>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500 mt-4">Tốc độ đi qua từng bước khác nhau tùy người — đây là quy trình khóa học trực tiếp hướng dẫn, không phải cam kết thời gian cho tất cả.</p>
+      </div>
+
+      <div class="flex gap-5 items-start bg-surface rounded-xl border border-slate-200 p-6">
+        <div id="speakerPhoto" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-slate-200 shrink-0 overflow-hidden bg-cover bg-center bg-no-repeat"></div>
+        <div>
+          <p class="font-semibold text-lg" data-speaker="name">[Tên Diễn Giả]</p>
+          <p class="text-slate-600 mt-1" data-speaker="title">[Chức danh / số năm kinh nghiệm / thành tích cụ thể]</p>
+        </div>
+      </div>
+      <div class="mt-6 space-y-4 text-slate-700 leading-relaxed border-l-4 border-primary/30 pl-5">
+        <p>Hơn 10 năm trước, tôi được dạy đúng một cách: tìm cho được thật nhiều data khách hàng, và phải dám mời — càng nhiều càng tốt. Tôi làm đúng như vậy. Ngày này qua ngày khác, tôi sưu tầm lời từ chối nhiều hơn sưu tầm khách hàng.</p>
+        <p>Có những ngày tôi tự hỏi mình đang cố vì cái gì, khi mở điện thoại lên chỉ thấy toàn tin nhắn "không cần đâu", "để suy nghĩ đã" — hoặc tệ hơn, im lặng.</p>
+        <p>Rồi tôi nhận ra một điều làm thay đổi mọi thứ: có rất nhiều người thực sự cần đến những gì tôi có — chỉ là tôi không biết họ đang ở đâu, và họ cũng không biết tôi tồn tại. Vấn đề chưa bao giờ là thiếu người cần. Vấn đề là tôi đang tìm sai chỗ, sai cách.</p>
+        <p>Tôi đổi góc nhìn. Đổi cách làm. Không mời ai nữa — chỉ cần xuất hiện đúng chỗ, để đúng người tự tìm đến tôi. Không cần thêm bất cứ lời từ chối nào nữa.</p>
+        <p class="font-semibold text-primary">Và điều tôi tin chắc: cách này không phải năng khiếu riêng của tôi. Ai cũng làm được — vì tôi cũng từng là người sưu tầm lời từ chối nhiều hơn ai hết.</p>
+      </div>
+      <p class="mt-4 text-sm text-slate-500 italic">Câu chuyện của từng học viên khác sẽ cập nhật dần ở đây — không dùng thông tin dàn dựng.</p>
+    </div>
+  </section>
+
+  <!-- CURRICULUM (outcome-driven) -->
+  <section class="py-16 px-5 sm:px-8">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-8">2 buổi Zoom, tôi và đội ngũ diễn giả sẽ chỉ bạn từng bước</h2>
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <p class="text-sm font-semibold text-accent mb-3">BUỔI 1 · 120-180 phút</p>
+          <div class="space-y-4">
+            <div class="flex gap-3"><span class="font-heading font-extrabold text-accent shrink-0">1</span><div><p class="font-semibold">Vì sao bạn bị từ chối mặc dù bạn không hề tệ</p><p class="text-sm text-slate-600 mt-1">Bạn sẽ hiểu chính xác lý do — và ngừng tự trách bản thân.</p></div></div>
+            <div class="flex gap-3"><span class="font-heading font-extrabold text-accent shrink-0">2</span><div><p class="font-semibold">Bí mật nhận ra "người đang thực sự cần bạn" đang ở đâu</p><p class="text-sm text-slate-600 mt-1">Làm sao để biết người phù hợp đang ở đâu? Làm thế nào để họ nhìn thấy và chủ động liên hệ với bạn?</p></div></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <p class="text-sm font-semibold text-accent mb-3">BUỔI 2 · 120-180 phút</p>
+          <div class="space-y-4">
+            <div class="flex gap-3"><span class="font-heading font-extrabold text-accent shrink-0">3</span><div><p class="font-semibold">Quy trình hút khách hàng hàng loạt mà không cần gặp mặt từng người</p><p class="text-sm text-slate-600 mt-1">Bạn sẽ có quy trình để nhiều người tự tìm đến hỏi mua, không cần thuyết phục từng người một.</p></div></div>
+            <div class="flex gap-3"><span class="font-heading font-extrabold text-accent shrink-0">4</span><div><p class="font-semibold">Bí mật vận hành của toàn bộ hệ thống này trong thực tế</p><p class="text-sm text-slate-600 mt-1">Bạn sẽ thấy cách nó chạy thật, từng bước một, để tự tin áp dụng ngay.</p></div></div>
+            <div class="flex gap-3"><span class="font-heading font-extrabold text-accent shrink-0">5</span><div><p class="font-semibold">Quy trình đào tạo cho từng mô hình kinh doanh cụ thể</p><p class="text-sm text-slate-600 mt-1">Bạn sẽ biết cách điều chỉnh quy trình này cho đúng mô hình bạn đang làm.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONEST ANSWER — trả lời trực tiếp nghi ngờ lớn nhất -->
+  <section class="py-16 px-5 sm:px-8 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Bạn sẽ hỏi: học xong có chắc tăng thu nhập, mời được người thật không?</h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Hơn 300 người trước bạn đã đi qua đúng hành trình này — từ chỗ không biết bắt đầu từ đâu, đến lúc có người chủ động nhắn hỏi — nên đây không phải một ý tưởng chưa kiểm chứng. Nhưng thật lòng, tôi sẽ không hứa bạn đi nhanh hay chậm bằng ai. Kết quả phụ thuộc vào việc bạn có áp dụng hay không, tôi không thể làm thay phần đó.
+      </p>
+      <p class="text-lg text-slate-600 leading-relaxed mt-4">
+        Điều tôi chắc chắn: đây là cách tiếp cận đúng logic. Nhắm đúng người đang có nhu cầu, thay vì đoán mò trong vòng quen biết. Tỷ lệ họ quan tâm sẽ cao hơn hẳn.
+      </p>
+      <p class="text-lg text-slate-600 leading-relaxed mt-4">
+        Miễn phí. Không ràng buộc. Rủi ro duy nhất của bạn là 2 buổi tối bỏ ra để tham dự. Không hợp thì dừng, không mất gì cả.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-5 sm:px-8">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10">Câu hỏi thường gặp</h2>
+      <div class="space-y-4" id="faq"></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="dangky" class="py-20 px-5 sm:px-8 bg-primary text-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Giữ chỗ buổi Zoom sắp tới</h2>
+      <p class="text-white/80 mb-8">Để lại thông tin, tôi nhắn Zalo báo lịch và gửi link Zoom trước giờ học.</p>
+
+      <div class="bg-white rounded-xl p-6 sm:p-8 text-left text-ink">
+        <div class="space-y-4 mb-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-600 mb-1" for="reg-name">Tên của bạn</label>
+            <input type="text" id="reg-name" class="w-full border border-slate-300 rounded-lg px-4 py-2.5" placeholder="Vd: Nguyễn Thị Lan">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-600 mb-1" for="reg-phone">Số điện thoại / Zalo *</label>
+            <input type="tel" inputmode="tel" id="reg-phone" class="w-full border border-slate-300 rounded-lg px-4 py-2.5" placeholder="09xxxxxxxx">
+          </div>
+        </div>
+        <p id="reg-error" class="hidden text-red-600 text-sm mb-3"></p>
+        <p id="reg-success" class="hidden text-primary font-semibold text-sm mb-3">✅ Đã gửi! Tôi sẽ nhắn Zalo báo lịch trong ít phút.</p>
+        <button id="reg-submit-btn" type="button" class="w-full bg-accent text-white px-8 py-3.5 rounded-lg text-lg font-semibold hover:opacity-90 transition">
+          Giữ chỗ — Miễn phí
+        </button>
+      </div>
+
+      <p class="text-sm text-white/60 mt-6">Không mất phí. Không cần kinh nghiệm. Dừng bất cứ lúc nào.</p>
+      <p class="text-xs text-white/40 mt-3">Thông tin chỉ dùng để gửi link Zoom và nhắc lịch học — không chia sẻ cho bên thứ ba ngoài mục đích này.</p>
+      <p class="text-sm text-white/70 mt-4">Hoặc <a href="#" data-zalo-link target="_blank" rel="noopener" class="underline underline-offset-4 font-semibold">nhắn Zalo trực tiếp</a> nếu muốn trao đổi ngay.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER — tối giản, không đặt UNIHUB làm nhân vật chính -->
+  <footer class="py-10 px-5 sm:px-8 bg-ink text-slate-500 text-center text-xs">
+    <p>Nội dung được chia sẻ với sự đồng hành của Công ty CP TMĐT UNIHUB · MST 0105461632</p>
+    <p class="pt-2">© 2026</p>
+  </footer>
+
+  <script>
+    // Populate tất cả chỗ nhắc diễn giả từ object SPEAKER (khai báo ở đầu trang)
+    document.querySelectorAll('[data-speaker="name"]').forEach(el => el.textContent = SPEAKER.name);
+    document.querySelectorAll('[data-speaker="title"]').forEach(el => el.textContent = SPEAKER.title);
+    document.querySelectorAll('[data-zalo-link]').forEach(el => el.href = SPEAKER.zaloLink);
+    if (SPEAKER.photoUrl) {
+      document.getElementById('speakerPhoto').style.backgroundImage = `url('${SPEAKER.photoUrl}')`;
+    }
+
+    const faqs = [
+      ["Ai là người chia sẻ nội dung này?", "Diễn giả mỗi buổi Zoom có thể khác nhau, nhưng đều là những người được tuyển chọn kỹ và đã có thành tích thật khi áp dụng đúng quy trình này trong thực tế."],
+      ["Đây có phải quảng cáo trá hình để tuyển tôi vào chương trình nào đó không?", "Không giấu giếm: nếu cuối buổi 2 có một cơ hội cụ thể để áp dụng ngay, tôi sẽ giới thiệu — nhưng hoàn toàn tùy chọn, không bắt buộc, và nếu có thì không mất phí tham gia. Nội dung 2 buổi học vẫn có giá trị dùng độc lập dù bạn không tham gia thêm gì sau đó."],
+      ["Khóa học có mất phí không?", "Không. Cả 2 buổi Zoom đều miễn phí, không yêu cầu thanh toán hay mua gì cả."],
+      ["Mỗi buổi kéo dài bao lâu?", "Khoảng 120-180 phút mỗi buổi."],
+      ["Không tham dự live được thì sao?", "Không sao, bạn vẫn giữ chỗ. Tôi sẽ gửi bản ghi cho bạn, hoặc sắp xếp cho bạn tham dự buổi kế tiếp."],
+      ["Học qua đâu?", "Qua Zoom, 2 buổi trực tiếp. Sau khi giữ chỗ, bạn nhận link Zoom qua Zalo trước mỗi buổi."],
+      ["Buổi học diễn ra khi nào?", "Lịch cụ thể sẽ được thông báo trong nhóm Zalo ngay sau khi bạn giữ chỗ."]
+    ];
+    const wrap = document.getElementById('faq');
+    faqs.forEach(([q,a]) => {
+      const item = document.createElement('div');
+      item.className = 'bg-white rounded-lg shadow-md overflow-hidden';
+      item.innerHTML = `
+        <button class="faq-toggle w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-50 transition">
+          ${q}<span class="faq-icon text-2xl text-accent">+</span>
+        </button>
+        <div class="faq-content hidden px-6 pb-6 text-gray-700">${a}</div>
+      `;
+      wrap.appendChild(item);
+    });
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('.faq-icon');
+        content.classList.toggle('hidden');
+        icon.textContent = content.classList.contains('hidden') ? '+' : '−';
+      });
+    });
+
+    // Form giữ chỗ — gửi vào /api/register, API sẽ báo qua Telegram
+    document.getElementById('reg-submit-btn').addEventListener('click', () => {
+      const name = document.getElementById('reg-name').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const errEl = document.getElementById('reg-error');
+      const okEl = document.getElementById('reg-success');
+      const btn = document.getElementById('reg-submit-btn');
+
+      if (!phone || phone.replace(/\D/g, '').length < 9) {
+        errEl.textContent = 'Bạn nhập số điện thoại/Zalo hợp lệ để tôi liên hệ nhé.';
+        errEl.classList.remove('hidden');
+        okEl.classList.add('hidden');
+        return;
+      }
+      errEl.classList.add('hidden');
+      btn.disabled = true;
+      btn.textContent = 'Đang gửi...';
+
+      fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, speaker: SPEAKER.name })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error('failed');
+          okEl.classList.remove('hidden');
+          btn.textContent = 'Đã gửi ✓';
+        })
+        .catch(() => {
+          btn.disabled = false;
+          btn.textContent = 'Giữ chỗ — Miễn phí';
+          errEl.textContent = 'Gửi chưa thành công, thử lại hoặc nhắn Zalo trực tiếp bên dưới.';
+          errEl.classList.remove('hidden');
+        });
+    });
+  </script>
+
+</body>
+</html>

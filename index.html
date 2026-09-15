@@ -64,7 +64,9 @@
       name: "Trần Thị Thúy",
       title: "Thạc sỹ Lãnh đạo Giáo dục (Úc) · Giảng viên IELTS VTV2 · Sáng lập cộng đồng Tâm ‑ Thể ‑ Dưỡng · 10 năm kinh nghiệm",
       photoUrl: "speaker.jpg", // dán URL ảnh thật vào đây; để trống thì hiện khung avatar xám
-      zaloLink: "https://zalo.me/0775662903"
+      zaloLink: "https://zalo.me/0775662903",
+      fbProfile: "https://www.facebook.com/TranThiThuy.spayourmind/",
+      fbPage: "https://www.facebook.com/tranthuyUnihub.mindspa"
     };
   </script>
 
@@ -220,6 +222,11 @@
         <div>
           <p class="font-semibold text-lg" data-speaker="name">Trần Thị Thúy</p>
           <p class="text-slate-600 mt-1" data-speaker="title">Thạc sỹ Lãnh đạo Giáo dục (Úc) · Giảng viên IELTS VTV2 · Sáng lập cộng đồng Tâm ‑ Thể ‑ Dưỡng · 10 năm kinh nghiệm</p>
+          <p class="text-sm mt-2">
+            <a href="https://www.facebook.com/TranThiThuy.spayourmind/" data-fb-profile target="_blank" rel="noopener" class="text-primary underline underline-offset-2 font-medium">Trang cá nhân</a>
+            <span class="text-slate-400 mx-1">·</span>
+            <a href="https://www.facebook.com/tranthuyUnihub.mindspa" data-fb-page target="_blank" rel="noopener" class="text-primary underline underline-offset-2 font-medium">Fanpage</a>
+          </p>
         </div>
       </div>
       <div class="mt-6 space-y-4 text-slate-700 leading-relaxed border-l-4 border-primary/30 pl-5">
@@ -331,6 +338,8 @@
     document.querySelectorAll('[data-speaker="name"]').forEach(el => el.textContent = SPEAKER.name);
     document.querySelectorAll('[data-speaker="title"]').forEach(el => el.textContent = SPEAKER.title);
     document.querySelectorAll('[data-zalo-link]').forEach(el => el.href = SPEAKER.zaloLink);
+    document.querySelectorAll('[data-fb-profile]').forEach(el => el.href = SPEAKER.fbProfile);
+    document.querySelectorAll('[data-fb-page]').forEach(el => el.href = SPEAKER.fbPage);
     if (SPEAKER.photoUrl) {
       document.getElementById('speakerPhoto').style.backgroundImage = `url('${SPEAKER.photoUrl}')`;
     }

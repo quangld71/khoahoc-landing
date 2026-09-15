@@ -300,6 +300,10 @@
             <input type="tel" inputmode="tel" id="reg-phone" class="w-full border border-slate-300 rounded-lg px-4 py-2.5" placeholder="09xxxxxxxx">
           </div>
         </div>
+        <label class="flex items-start gap-2 text-xs text-slate-500 mb-4">
+          <input type="checkbox" id="reg-consent" class="mt-0.5 shrink-0">
+          <span>Tôi đồng ý để <span data-speaker="name">Trần Thị Thúy</span> lưu và dùng số điện thoại/Zalo này chỉ để gửi link Zoom và nhắc lịch học — không dùng cho mục đích khác, không chia sẻ bên thứ ba. Có thể yêu cầu xoá thông tin bất cứ lúc nào qua Zalo bên dưới.</span>
+        </label>
         <p id="reg-error" class="hidden text-red-600 text-sm mb-3"></p>
         <p id="reg-success" class="hidden text-primary font-semibold text-sm mb-3">✅ Đã gửi! Tôi sẽ nhắn Zalo báo lịch trong ít phút.</p>
         <button id="reg-submit-btn" type="button" class="w-full bg-accent text-white px-8 py-3.5 rounded-lg text-lg font-semibold hover:opacity-90 transition">
@@ -308,7 +312,6 @@
       </div>
 
       <p class="text-sm text-white/60 mt-6">Không mất phí. Không cần kinh nghiệm. Dừng bất cứ lúc nào.</p>
-      <p class="text-xs text-white/40 mt-3">Thông tin chỉ dùng để gửi link Zoom và nhắc lịch học — không chia sẻ cho bên thứ ba ngoài mục đích này.</p>
       <p class="text-sm text-white/70 mt-4">Hoặc <a href="#" data-zalo-link target="_blank" rel="noopener" class="underline underline-offset-4 font-semibold">nhắn Zalo trực tiếp</a> nếu muốn trao đổi ngay.</p>
     </div>
   </section>
@@ -368,6 +371,12 @@
 
       if (!phone || phone.replace(/\D/g, '').length < 9) {
         errEl.textContent = 'Bạn nhập số điện thoại/Zalo hợp lệ để tôi liên hệ nhé.';
+        errEl.classList.remove('hidden');
+        okEl.classList.add('hidden');
+        return;
+      }
+      if (!document.getElementById('reg-consent').checked) {
+        errEl.textContent = 'Bạn tick đồng ý ở trên để tôi lưu và liên hệ lại nhé.';
         errEl.classList.remove('hidden');
         okEl.classList.add('hidden');
         return;

@@ -299,6 +299,10 @@
             <label class="block text-sm font-medium text-slate-600 mb-1" for="reg-phone">Số điện thoại / Zalo *</label>
             <input type="tel" inputmode="tel" id="reg-phone" class="w-full border border-slate-300 rounded-lg px-4 py-2.5" placeholder="09xxxxxxxx">
           </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-600 mb-1" for="reg-email">Email (không bắt buộc)</label>
+            <input type="email" id="reg-email" class="w-full border border-slate-300 rounded-lg px-4 py-2.5" placeholder="ban@email.com">
+          </div>
         </div>
         <label class="flex items-start gap-2 text-xs text-slate-500 mb-4">
           <input type="checkbox" id="reg-consent" class="mt-0.5 shrink-0">
@@ -365,6 +369,7 @@
     document.getElementById('reg-submit-btn').addEventListener('click', () => {
       const name = document.getElementById('reg-name').value.trim();
       const phone = document.getElementById('reg-phone').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
       const errEl = document.getElementById('reg-error');
       const okEl = document.getElementById('reg-success');
       const btn = document.getElementById('reg-submit-btn');
@@ -388,7 +393,7 @@
       fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, speaker: SPEAKER.name })
+        body: JSON.stringify({ name, phone, email, speaker: SPEAKER.name })
       })
         .then(res => {
           if (!res.ok) throw new Error('failed');

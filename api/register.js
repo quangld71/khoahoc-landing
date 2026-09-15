@@ -20,6 +20,7 @@ module.exports = async (req, res) => {
   }
 
   const name = (body.name || 'Chưa để tên').toString().slice(0, 100);
+  const email = (body.email || '').toString().slice(0, 100).trim();
   const speaker = (body.speaker || 'Chưa rõ diễn giả').toString().slice(0, 100);
   const time = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
 
@@ -27,8 +28,9 @@ module.exports = async (req, res) => {
     `🎓 <b>GIỮ CHỖ MỚI — LỚP HỌC ZOOM</b>\n\n` +
     `Diễn giả: ${speaker}\n` +
     `Tên: ${name}\n` +
-    `SĐT/Zalo: <code>${phone}</code>\n\n` +
-    `⏰ ${time}\n` +
+    `SĐT/Zalo: <code>${phone}</code>\n` +
+    (email ? `Email: ${email}\n` : '') +
+    `\n⏰ ${time}\n` +
     `👉 Nhắn Zalo báo lịch + gửi link Zoom.`;
 
   try {

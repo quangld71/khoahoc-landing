@@ -65,6 +65,7 @@
       title: "Thạc sỹ Lãnh đạo Giáo dục (Úc) · Giảng viên IELTS VTV2 · Sáng lập cộng đồng Tâm ‑ Thể ‑ Dưỡng · 10 năm kinh nghiệm",
       photoUrl: "speaker.jpg", // dán URL ảnh thật vào đây; để trống thì hiện khung avatar xám
       zaloLink: "https://zalo.me/0775662903",
+      zaloGroupLink: "https://zalo.me/g/h1baobdz0tsqykfany7p",
       fbProfile: "https://www.facebook.com/tranthuyUnihub.mindspa",
       fbPage: "https://www.facebook.com/TranThiThuy.spayourmind/"
     };
@@ -323,6 +324,16 @@
       </div>
 
       <p class="text-sm text-white/60 mt-6">Không mất phí. Không cần kinh nghiệm. Dừng bất cứ lúc nào.</p>
+
+      <div class="bg-white rounded-xl p-6 mt-6 text-ink">
+        <p class="font-semibold mb-1">Hoặc vào thẳng nhóm Zalo để nhận link Zoom</p>
+        <p class="text-sm text-slate-500 mb-4">Quét mã QR bằng điện thoại, hoặc bấm nút bên dưới nếu đang xem trên điện thoại</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fzalo.me%2Fg%2Fh1baobdz0tsqykfany7p" alt="Mã QR tham gia nhóm Zalo" data-zalo-group-qr class="mx-auto rounded-lg border border-slate-200" width="220" height="220">
+        <a href="https://zalo.me/g/h1baobdz0tsqykfany7p" data-zalo-group target="_blank" rel="noopener" class="mt-4 block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
+          Vào nhóm Zalo — Miễn phí
+        </a>
+      </div>
+
       <p class="text-sm text-white/70 mt-4">Hoặc <a href="#" data-zalo-link target="_blank" rel="noopener" class="underline underline-offset-4 font-semibold">nhắn Zalo trực tiếp</a> nếu muốn trao đổi ngay.</p>
     </div>
   </section>
@@ -340,6 +351,8 @@
     document.querySelectorAll('[data-zalo-link]').forEach(el => el.href = SPEAKER.zaloLink);
     document.querySelectorAll('[data-fb-profile]').forEach(el => el.href = SPEAKER.fbProfile);
     document.querySelectorAll('[data-fb-page]').forEach(el => el.href = SPEAKER.fbPage);
+    document.querySelectorAll('[data-zalo-group]').forEach(el => el.href = SPEAKER.zaloGroupLink);
+    document.querySelectorAll('[data-zalo-group-qr]').forEach(el => el.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(SPEAKER.zaloGroupLink)}`);
     if (SPEAKER.photoUrl) {
       document.getElementById('speakerPhoto').style.backgroundImage = `url('${SPEAKER.photoUrl}')`;
     }

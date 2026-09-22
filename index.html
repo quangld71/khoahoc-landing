@@ -345,8 +345,9 @@
 
       <div class="bg-white rounded-xl p-6 mt-6 text-ink">
         <p class="font-semibold mb-1">Hoặc vào thẳng nhóm Zalo để nhận link Zoom</p>
-        <p class="text-sm text-slate-500 mb-4">Quét mã QR bằng điện thoại, hoặc bấm nút bên dưới nếu đang xem trên điện thoại</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fzalo.me%2Fg%2Fh1baobdz0tsqykfany7p" alt="Mã QR tham gia nhóm Zalo" data-zalo-group-qr class="mx-auto rounded-lg border border-slate-200" width="220" height="220">
+        <p class="text-sm text-slate-500 mb-4">Điền form ở trên trước, sau đó quét mã QR hoặc bấm nút bên dưới để vào nhóm</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Ftranthuy.uni.net.vn%2F%23dangky" alt="Mã QR — điền form giữ chỗ trước khi vào nhóm Zalo" data-zalo-group-qr class="mx-auto rounded-lg border border-slate-200" width="220" height="220">
+        <p id="zalo-gate-msg" class="hidden text-red-600 text-sm font-semibold mt-3 mb-1">👆 Điền form đăng ký ở trên trước khi vào nhóm Zalo nhé!</p>
         <a href="https://zalo.me/g/h1baobdz0tsqykfany7p" data-zalo-group target="_blank" rel="noopener" class="mt-4 block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
           Vào nhóm Zalo — Miễn phí
         </a>
@@ -369,11 +370,26 @@
     document.querySelectorAll('[data-zalo-link]').forEach(el => el.href = SPEAKER.zaloLink);
     document.querySelectorAll('[data-fb-profile]').forEach(el => el.href = SPEAKER.fbProfile);
     document.querySelectorAll('[data-fb-page]').forEach(el => el.href = SPEAKER.fbPage);
+    function hasRegistered() {
+      return localStorage.getItem('unihub_registered') === '1';
+    }
     document.querySelectorAll('[data-zalo-group]').forEach(el => {
       el.href = SPEAKER.zaloGroupLink;
-      el.addEventListener('click', () => { if (typeof fbq === 'function') fbq('trackCustom', 'JoinZaloGroup'); });
+      el.addEventListener('click', (e) => {
+        if (!hasRegistered()) {
+          e.preventDefault();
+          const gateMsg = document.getElementById('zalo-gate-msg');
+          if (gateMsg) gateMsg.classList.remove('hidden');
+          const nameInput = document.getElementById('reg-name');
+          nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          nameInput.focus();
+          return;
+        }
+        if (typeof fbq === 'function') fbq('trackCustom', 'JoinZaloGroup');
+      });
     });
-    document.querySelectorAll('[data-zalo-group-qr]').forEach(el => el.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(SPEAKER.zaloGroupLink)}`);
+    // QR trỏ về form giữ chỗ trên trang (không trỏ thẳng vào nhóm Zalo nữa) — quét QR vẫn phải qua bước đăng ký
+    document.querySelectorAll('[data-zalo-group-qr]').forEach(el => el.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(location.origin + location.pathname + '#dangky')}`);
     if (SPEAKER.photoUrl) {
       document.getElementById('speakerPhoto').style.backgroundImage = `url('${SPEAKER.photoUrl}')`;
     }
@@ -442,6 +458,9 @@
           if (!res.ok) throw new Error('failed');
           okEl.classList.remove('hidden');
           btn.textContent = 'Đã gửi ✓';
+          localStorage.setItem('unihub_registered', '1');
+          const gateMsg = document.getElementById('zalo-gate-msg');
+          if (gateMsg) gateMsg.classList.add('hidden');
           if (typeof fbq === 'function') fbq('track', 'Lead');
         })
         .catch(() => {

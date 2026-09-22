@@ -40,6 +40,11 @@
     body { font-family: 'Noto Sans', sans-serif; background:#F5F7FA; }
     h1,h2,h3,h4 { font-family: 'Be Vietnam Pro', sans-serif; }
     .faq-content { transition: max-height .25s ease; }
+    @keyframes zaloPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(224,164,88,0.6); }
+      50% { box-shadow: 0 0 0 12px rgba(224,164,88,0); }
+    }
+    .zalo-pulse { animation: zaloPulse 1.4s ease-out 4; }
   </style>
 
   <!-- Meta Pixel Code -->
@@ -343,9 +348,10 @@
 
       <p class="text-sm text-white/60 mt-6">Không mất phí. Không cần kinh nghiệm. Dừng bất cứ lúc nào.</p>
 
-      <div class="bg-white rounded-xl p-6 mt-6 text-ink">
-        <p class="font-semibold mb-1">Hoặc vào thẳng nhóm Zalo để nhận link Zoom</p>
-        <p class="text-sm text-slate-500 mb-4">Điền form ở trên trước, sau đó quét mã QR hoặc bấm nút bên dưới để vào nhóm</p>
+      <div id="zalo-box" class="bg-white rounded-xl p-6 mt-6 text-ink transition-shadow">
+        <p id="zalo-intro-default" class="font-semibold mb-1">Hoặc vào thẳng nhóm Zalo để nhận link Zoom</p>
+        <p id="zalo-desc-default" class="text-sm text-slate-500 mb-4">Điền form ở trên trước, sau đó quét mã QR hoặc bấm nút bên dưới để vào nhóm</p>
+        <p id="zalo-next-step" class="hidden font-semibold text-primary mb-4">🎉 Đã lưu thông tin! Bước cuối cùng để chắc chắn nhận lịch học và link Zoom: bấm vào nhóm Zalo ngay bên dưới 👇</p>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Ftranthuy.uni.net.vn%2F%23dangky" alt="Mã QR — điền form giữ chỗ trước khi vào nhóm Zalo" data-zalo-group-qr class="mx-auto rounded-lg border border-slate-200" width="220" height="220">
         <p id="zalo-gate-msg" class="hidden text-red-600 text-sm font-semibold mt-3 mb-1">👆 Điền form đăng ký ở trên trước khi vào nhóm Zalo nhé!</p>
         <a href="https://zalo.me/g/h1baobdz0tsqykfany7p" data-zalo-group target="_blank" rel="noopener" class="mt-4 block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
@@ -372,6 +378,12 @@
     document.querySelectorAll('[data-fb-page]').forEach(el => el.href = SPEAKER.fbPage);
     function hasRegistered() {
       return localStorage.getItem('unihub_registered') === '1';
+    }
+    // Khách quay lại đã từng đăng ký trước đó (nhớ qua trình duyệt) — hiện luôn lời mời vào nhóm Zalo, không hiện lại yêu cầu điền form
+    if (hasRegistered()) {
+      document.getElementById('zalo-intro-default').classList.add('hidden');
+      document.getElementById('zalo-desc-default').classList.add('hidden');
+      document.getElementById('zalo-next-step').classList.remove('hidden');
     }
     document.querySelectorAll('[data-zalo-group]').forEach(el => {
       el.href = SPEAKER.zaloGroupLink;
@@ -461,6 +473,16 @@
           localStorage.setItem('unihub_registered', '1');
           const gateMsg = document.getElementById('zalo-gate-msg');
           if (gateMsg) gateMsg.classList.add('hidden');
+          // Đã điền form xong — mời rõ bước cuối là bấm vào nhóm Zalo, không để họ dừng lại ở đây
+          document.getElementById('zalo-intro-default').classList.add('hidden');
+          document.getElementById('zalo-desc-default').classList.add('hidden');
+          const nextStep = document.getElementById('zalo-next-step');
+          nextStep.classList.remove('hidden');
+          const zaloBox = document.getElementById('zalo-box');
+          setTimeout(() => {
+            zaloBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            zaloBox.classList.add('zalo-pulse');
+          }, 600);
           if (typeof fbq === 'function') fbq('track', 'Lead');
         })
         .catch(() => {

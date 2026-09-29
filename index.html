@@ -349,10 +349,24 @@
 
       <p class="text-sm text-white/60 mt-6">Chỉ 99.000đ cho 2 buổi. Không cần kinh nghiệm. Thanh toán 1 lần, không phát sinh thêm.</p>
 
+      <div id="payment-box" class="hidden bg-white rounded-xl p-6 mt-6 text-ink text-left">
+        <p class="font-semibold mb-1">Hoàn tất thanh toán 99.000đ để giữ chỗ</p>
+        <p class="text-sm text-slate-500 mb-4">Quét mã QR bằng app ngân hàng, hoặc chuyển khoản theo thông tin bên dưới</p>
+        <img id="payment-qr" src="" alt="Mã QR thanh toán VietQR" class="mx-auto rounded-lg border border-slate-200" width="220" height="220">
+        <div class="mt-4 space-y-1.5 text-sm">
+          <p class="flex justify-between border-b border-slate-100 pb-1.5"><span class="text-slate-500">Ngân hàng</span><strong>VPBank</strong></p>
+          <p class="flex justify-between border-b border-slate-100 pb-1.5"><span class="text-slate-500">Số tài khoản</span><strong>AGBSPTHUY76</strong></p>
+          <p class="flex justify-between border-b border-slate-100 pb-1.5"><span class="text-slate-500">Chủ tài khoản</span><strong>TRAN THI THUY</strong></p>
+          <p class="flex justify-between border-b border-slate-100 pb-1.5"><span class="text-slate-500">Số tiền</span><strong>99.000đ</strong></p>
+          <p class="flex justify-between"><span class="text-slate-500">Nội dung CK</span><strong id="payment-note"></strong></p>
+        </div>
+        <p class="text-xs text-slate-500 mt-4">Sau khi chuyển khoản, nhắn Zalo (bên dưới) kèm ảnh chụp màn hình chuyển khoản để được xác nhận và thêm vào nhóm nhận link Zoom.</p>
+      </div>
+
       <div id="zalo-box" class="bg-white rounded-xl p-6 mt-6 text-ink transition-shadow">
         <p id="zalo-intro-default" class="font-semibold mb-1">Hoặc vào thẳng nhóm Zalo để nhận link Zoom</p>
         <p id="zalo-desc-default" class="text-sm text-slate-500 mb-4">Điền form ở trên trước, sau đó quét mã QR hoặc bấm nút bên dưới để vào nhóm</p>
-        <p id="zalo-next-step" class="hidden font-semibold text-primary mb-4">🎉 Đã lưu thông tin! Bước cuối cùng để chắc chắn nhận lịch học và link Zoom: bấm vào nhóm Zalo ngay bên dưới 👇</p>
+        <p id="zalo-next-step" class="hidden font-semibold text-primary mb-4">🎉 Đã lưu thông tin! Hoàn tất thanh toán 99.000đ ở trên, rồi nhắn Zalo kèm ảnh chuyển khoản để được thêm vào nhóm nhận link Zoom 👇</p>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Ftranthuy.uni.net.vn%2F%23dangky" alt="Mã QR — điền form giữ chỗ trước khi vào nhóm Zalo" data-zalo-group-qr class="mx-auto rounded-lg border border-slate-200" width="220" height="220">
         <p id="zalo-gate-msg" class="hidden text-red-600 text-sm font-semibold mt-3 mb-1">👆 Điền form đăng ký ở trên trước khi vào nhóm Zalo nhé!</p>
         <a href="https://zalo.me/g/bjwf15fdlxczl3nwemqg" data-zalo-group target="_blank" rel="noopener" class="mt-4 block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
@@ -385,6 +399,9 @@
       document.getElementById('zalo-intro-default').classList.add('hidden');
       document.getElementById('zalo-desc-default').classList.add('hidden');
       document.getElementById('zalo-next-step').classList.remove('hidden');
+      document.getElementById('payment-note').textContent = 'SĐT bạn đã đăng ký';
+      document.getElementById('payment-qr').src = `https://img.vietqr.io/image/VPB-AGBSPTHUY76-compact2.png?amount=99000&accountName=${encodeURIComponent('TRAN THI THUY')}`;
+      document.getElementById('payment-box').classList.remove('hidden');
     }
     document.querySelectorAll('[data-zalo-group]').forEach(el => {
       el.href = SPEAKER.zaloGroupLink;
@@ -474,15 +491,20 @@
           localStorage.setItem('unihub_registered', '1');
           const gateMsg = document.getElementById('zalo-gate-msg');
           if (gateMsg) gateMsg.classList.add('hidden');
-          // Đã điền form xong — mời rõ bước cuối là bấm vào nhóm Zalo, không để họ dừng lại ở đây
+          // Đã điền form xong — hiện phần thanh toán, kèm nội dung CK là SĐT để dễ đối chiếu
+          const phoneDigits = phone.replace(/\D/g, '');
+          document.getElementById('payment-note').textContent = phoneDigits;
+          document.getElementById('payment-qr').src = `https://img.vietqr.io/image/VPB-AGBSPTHUY76-compact2.png?amount=99000&addInfo=${encodeURIComponent(phoneDigits)}&accountName=${encodeURIComponent('TRAN THI THUY')}`;
+          const paymentBox = document.getElementById('payment-box');
+          paymentBox.classList.remove('hidden');
+          // Mời rõ bước cuối là thanh toán rồi vào nhóm Zalo, không để họ dừng lại ở đây
           document.getElementById('zalo-intro-default').classList.add('hidden');
           document.getElementById('zalo-desc-default').classList.add('hidden');
           const nextStep = document.getElementById('zalo-next-step');
           nextStep.classList.remove('hidden');
-          const zaloBox = document.getElementById('zalo-box');
           setTimeout(() => {
-            zaloBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            zaloBox.classList.add('zalo-pulse');
+            paymentBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            paymentBox.classList.add('zalo-pulse');
           }, 600);
           if (typeof fbq === 'function') fbq('track', 'Lead');
         })
